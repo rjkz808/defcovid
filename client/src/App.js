@@ -2,7 +2,10 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 import Dashboard from './components/Dashboard';
+import Header from './components/Header';
+import Navbar from './components/Navbar';
 import NotFound from './components/NotFound';
+import Theme from './components/Theme';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -14,23 +17,25 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Root = styled.div`
-  background-color: #050b17;
+  background-color: ${props => props.theme.colors.background};
   min-width: 100wv;
   min-height: 100vh;
 `;
 
 export default function App() {
   return (
-    <>
+    <Theme>
       <GlobalStyle />
       <Root>
         <BrowserRouter>
+          <Header />
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route component={NotFound} />
           </Switch>
+          <Navbar />
         </BrowserRouter>
       </Root>
-    </>
+    </Theme>
   );
 }
