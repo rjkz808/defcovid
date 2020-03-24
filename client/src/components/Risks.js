@@ -2,11 +2,11 @@ import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import PointsContext from '../contexts/PointsContext';
+import UserContext from '../contexts/UserContext';
 import PointCard from './PointCard';
 
 export default function Risks() {
-  const pointsContext = useContext(PointsContext);
+  const userContext = useContext(UserContext);
   const [redirect, setRedirect] = useState(false);
 
   if (redirect) {
@@ -35,8 +35,8 @@ export default function Risks() {
     { title: 'Наличие питомца, требующего прогулки на улице', points: 6 },
     { title: 'Обниматься с зараженным COVID-19', points: 100 },
   ].map((action, idx) => {
-    function handleClick() {
-      pointsContext.subtractPoints(action.points);
+    async function handleClick() {
+      await userContext.subtractPoints(action.points);
       setRedirect(true);
     }
 

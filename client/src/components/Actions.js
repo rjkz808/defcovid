@@ -2,11 +2,11 @@ import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import PointsContext from '../contexts/PointsContext';
+import UserContext from '../contexts/UserContext';
 import PointCard from './PointCard';
 
 export default function Actions() {
-  const pointsContext = useContext(PointsContext);
+  const userContext = useContext(UserContext);
   const [redirect, setRedirect] = useState(false);
 
   if (redirect) {
@@ -37,8 +37,8 @@ export default function Actions() {
     { title: 'Не пользоваться общественным транспортом (хотя бы в час пик)', points: 9 },
     { title: 'Летать в космосе на МКС', points: 100 },
   ].map((action, idx) => {
-    function handleClick() {
-      pointsContext.addPoints(action.points);
+    async function handleClick() {
+      await userContext.addPoints(action.points);
       setRedirect(true);
     }
 

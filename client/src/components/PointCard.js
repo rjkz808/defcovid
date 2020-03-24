@@ -43,7 +43,7 @@ function PointCard(props) {
     <PointCol xs="12">
       <Card onClick={props.onClick}>
         <Card.Body>
-          <PointCardText variant="foreground">
+          <PointCardText as="div" variant="foreground">
             <div>{props.children}</div>
             <PointBadge variant={props.variant}>{props.points}</PointBadge>
           </PointCardText>

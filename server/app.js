@@ -25,19 +25,20 @@ app.use((err, req, res, next) => {
   res.status(status).send({ error: message });
 });
 
+mongoose.set('useFindAndModify', false);
 mongoose.connect('mongodb://db:27017/defcovid', { useNewUrlParser: true });
 const db = mongoose.connection;
 
 db.on('error', err => {
-  console.error('Connection error:', err);
+  console.error('connection error:', err);
 });
 
 db.on('open', () => {
-  console.log('MongoDB connected');
+  console.log('mongodb connected');
 
   const port = 8080;
 
   app.listen(port, () => {
-    console.log(`Listening at :${port}`);
+    console.log(`listening at :${port}`);
   });
 });

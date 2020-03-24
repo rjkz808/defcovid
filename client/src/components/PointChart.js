@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { PieChart, Pie, Label, Cell, ResponsiveContainer } from 'recharts';
 import styled, { ThemeContext } from 'styled-components';
 import * as constants from '../constants';
-import PointsContext from '../contexts/PointsContext';
+import UserContext from '../contexts/UserContext';
 
 const PointChartContainer = styled.div`
   margin-right: auto;
@@ -41,11 +41,11 @@ const PointChartContainer = styled.div`
 
 export default function PointChart() {
   const [animation, setAnimation] = useState(true);
-  const pointsContext = useContext(PointsContext);
   const themeContext = useContext(ThemeContext);
+  const userContext = useContext(UserContext);
 
-  const isPositive = pointsContext.points > constants.NO_POINTS;
-  const pointsAbsolute = Math.abs(pointsContext.points);
+  const isPositive = userContext.user.points > constants.NO_POINTS;
+  const pointsAbsolute = Math.abs(userContext.user.points);
 
   const data = useMemo(
     () => [
@@ -75,11 +75,11 @@ export default function PointChart() {
   }, [data, themeContext.colors]);
 
   function getSign() {
-    if (pointsContext.points > 0) {
+    if (userContext.user.points > 0) {
       return '+';
     }
 
-    if (pointsContext.points === 0) {
+    if (userContext.user.points === 0) {
       return '';
     }
 

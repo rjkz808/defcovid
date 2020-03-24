@@ -2,13 +2,15 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 import Actions from './components/Actions';
+import Auth from './components/Auth';
 import Dashboard from './components/Dashboard';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 import NotFound from './components/NotFound';
+import Profile from './components/Profile';
 import Risks from './components/Risks';
 import Theme from './components/Theme';
-import { PointsContextProvider } from './contexts/PointsContext';
+import { UserContextProvider } from './contexts/UserContext';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -30,18 +32,21 @@ export default function App() {
     <Theme>
       <GlobalStyle />
       <Root>
-        <PointsContextProvider>
-          <BrowserRouter>
-            <Header />
-            <Switch>
-              <Route exact path="/" component={Dashboard} />
-              <Route path="/actions" component={Actions} />
-              <Route path="/risks" component={Risks} />
-              <Route component={NotFound} />
-            </Switch>
-            <Navbar />
-          </BrowserRouter>
-        </PointsContextProvider>
+        <UserContextProvider>
+          <Header />
+          <Auth>
+            <BrowserRouter>
+              <Switch>
+                <Route exact path="/" component={Dashboard} />
+                <Route path="/actions" component={Actions} />
+                <Route path="/risks" component={Risks} />
+                <Route path="/profile" component={Profile} />
+                <Route component={NotFound} />
+              </Switch>
+              <Navbar />
+            </BrowserRouter>
+          </Auth>
+        </UserContextProvider>
       </Root>
     </Theme>
   );

@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import BsNavbar from 'react-bootstrap/Navbar';
 import styled from 'styled-components';
 
-const Icon = styled.i`
+const NavIcon = styled.i`
   width: fit-content;
   height: fit-content;
   line-height: 1;
@@ -54,9 +54,9 @@ export default function Navbar() {
     { icon: 'error_outline', route: '/sos' },
   ].map(link => (
     <NavLink key={link.route} to={link.route}>
-      <Icon active={location.pathname === link.route} className="material-icons-outlined">
+      <NavIcon active={location.pathname === link.route} className="material-icons-outlined">
         {link.icon}
-      </Icon>
+      </NavIcon>
     </NavLink>
   ));
 
