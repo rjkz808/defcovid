@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  db:
+    container_name: defcoviddb
+    image: mongo
+    hostname: db
+    restart: on-failure
+    environment:
+      - GET_HOST_FROM=dns
+    ports:
+      - 27017:27017
+    networks:
+      - defcovidnet
+
+  app:
+    container_name: defcovidapi
+    image: rjkz808/defcovidapi
+    hostname: defcovidapi
+    build: .
+    restart: on-failure
+    environment:
+      - GET_HOST_FROM=dns
+    networks:
+      - defcovidnet
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    links:
+      - db
+
+networks:
+  defcovidnet:
+    driver: bridge
