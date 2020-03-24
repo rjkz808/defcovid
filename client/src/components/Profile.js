@@ -60,9 +60,7 @@ const ProfileBadge = styled(Badge)`
   box-shadow: 0px 0px 6px 0.5px ${props => props.theme.colors[props.variant]};
   background-color: ${props => props.theme.colors[props.variant]};
   color: ${props =>
-    props.variant === 'foreground'
-      ? props.theme.colors.accent
-      : props.theme.colors[props.variant]};
+    props.variant === 'foreground' ? props.theme.colors.accent : props.theme.colors.foreground};
 `;
 
 const ProfileCard = styled(Card)`

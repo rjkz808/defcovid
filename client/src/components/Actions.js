@@ -14,28 +14,33 @@ export default function Actions() {
   }
 
   const actions = [
-    { title: 'Мытье рук мылом или дезсредством', points: 6 },
-    { title: 'Обработка рук и лица влажной салфеткой', points: 3 },
-    { title: 'Обработка рук перед входом в дом', points: 6 },
-    { title: 'Обработка дезсредством продуктов', points: 4 },
-    { title: 'Принять душ', points: 5 },
-    { title: 'Проветрить помещение', points: 5 },
-    { title: 'Обработка смартфона/smart watch', points: 7 },
-    { title: 'Обработка наручных часов', points: 4 },
-    { title: 'Обработка украшений', points: 4 },
-    { title: 'Обработка клавиатуры', points: 5 },
-    { title: 'Обработка компьютерной мыши', points: 5 },
-    { title: 'Изолировать дома верхнюю одежду', points: 7 },
+    { title: 'I washed my hands with soap or a disinfectant', points: 6 },
+    { title: 'I rubbed my hands with a wet wipe', points: 3 },
+    { title: 'I treated my hands with a disinfectant before I got home', points: 6 },
+    { title: 'I sanitized the products I bought', points: 4 },
+    { title: 'I just took a shower', points: 5 },
+    { title: 'I have aired my room', points: 5 },
+    { title: 'I treated my phone/smart watch with a disinfectant', points: 7 },
+    { title: 'I treated my watch with a disinfectant', points: 4 },
+    { title: 'I treated my jewerly with a disinfectant', points: 4 },
+    { title: 'I treated my keyboard with a disinfectant', points: 5 },
+    { title: 'I treated my mouse with a disinfectant', points: 5 },
+    { title: 'I isolated all my outerwear at home', points: 7 },
     {
-      title: 'Позвонить в службу 103 при признаках заболевания или при контакте 1-го уровня',
+      title:
+        'I called 103 when I had signs of illness (or after I have been communicating with infected people)',
       points: 10,
     },
-    { title: 'Самоизоляция и самоконтроль', points: 10 },
-    { title: 'Одеть маску при наличии признаков ОРВИ (у себя, у окружающих)', points: 9 },
-    { title: 'Обработка лап собаки после прогулки/прогулка в попоне, налапниках', points: 8 },
-    { title: 'Дистанционная работа', points: 8 },
-    { title: 'Не пользоваться общественным транспортом (хотя бы в час пик)', points: 9 },
-    { title: 'Летать в космосе на МКС', points: 100 },
+    { title: 'Self-isolation and self-control', points: 10 },
+    {
+      title:
+        'I put on a medical mask in the presence of signs of acute respiratory viral infection (of myself or of other people)',
+      points: 9,
+    },
+    { title: 'I treated the paws of my dog after a walk with a disinfectant', points: 8 },
+    { title: 'Today I worked remotely', points: 8 },
+    { title: 'I did not use public transport (at least during rush hour)', points: 9 },
+    { title: 'I fly in the space on ISS', points: 100 },
   ].map((action, idx) => {
     async function handleClick() {
       await userContext.addPoints(action.points);

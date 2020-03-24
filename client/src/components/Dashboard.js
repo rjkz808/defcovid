@@ -27,6 +27,23 @@ export default function Dashboard() {
     setRedirect('/actions');
   }
 
+  const randomTip = useMemo(() => {
+    const tips = [
+      'Do not panic. Try to focus on virus prevention instead!',
+      'Observe personal hygiene.',
+      'Wash your hands with soap frequently (and also more than 20 seconds).',
+      'Rub your hands and face with a wet wipe.',
+      'Do not touch your face/nose/eyes with your hands.',
+      'Do not touch your face/nose/eyes with your hands.',
+      'Try to sneeze and cough only in your handkerchief (or use your sleeve).',
+      'If you are older than 60, try to stay home as long as possible.',
+      'Take care of your elderly relatives.',
+      'Take care of your elderly relatives.',
+    ];
+
+    return tips[Math.floor(Math.random() * tips.length)];
+  }, []);
+
   if (redirect.length > 0) {
     return <Redirect exact to={redirect} />;
   }
@@ -61,7 +78,7 @@ export default function Dashboard() {
               <Card>
                 <Card.Body>
                   <Card.Title variant="warning">Useful tip</Card.Title>
-                  <Card.Text>Do not touch your face/nose/eyes with your hands.</Card.Text>
+                  <Card.Text>{randomTip}</Card.Text>
                 </Card.Body>
               </Card>
             </DashboardCol>

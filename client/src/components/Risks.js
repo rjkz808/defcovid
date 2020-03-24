@@ -14,26 +14,28 @@ export default function Risks() {
   }
 
   const actions = [
-    { title: 'Приветствие - пожать руку', points: 7 },
-    { title: 'Обниматься, целоваться', points: 8 },
+    { title: 'Snake hands', points: 7 },
+    { title: 'Hug, kiss', points: 8 },
     {
-      title: 'Прикасаться в местах общего пользования к поручням, кнопкам, ручкам, кранам',
+      title: 'In the common areas I touched the handrails/buttons/handles/taps',
       points: 6,
     },
-    { title: 'Контакт на работе/большой коллектив/работа с людьми', points: 8 },
-    { title: 'Использование наличных денег', points: 6 },
-    { title: 'Близкая дистанция общения/кучность', points: 5 },
-    { title: 'Общественный транспорт', points: 7 },
-    { title: 'Гости', points: 5 },
-    { title: 'Рискованные контакты', points: 5 },
-    { title: 'Магазин/торговый центр', points: 7 },
-    { title: 'Вокзал, аэропорт', points: 9 },
-    { title: 'Общественное питание', points: 6 },
-    { title: 'Медицинское учреждение/аптека', points: 8 },
-    { title: 'Повышенная температура', points: 7 },
-    { title: 'Сухой кашель, тяжелое дыхание/одышка при небольшой нагрузке', points: 8 },
-    { title: 'Наличие питомца, требующего прогулки на улице', points: 6 },
-    { title: 'Обниматься с зараженным COVID-19', points: 100 },
+    { title: 'Contact with a colleague at work/large team', points: 8 },
+    { title: 'I used cash', points: 6 },
+    { title: 'Close distance when talking with people', points: 5 },
+    { title: 'I drove in public transport', points: 7 },
+    { title: 'I had guests', points: 5 },
+    { title: 'I visited a store/mall', points: 7 },
+    { title: 'I visited the train station/airport', points: 9 },
+    { title: 'Food in a public place', points: 6 },
+    { title: 'I visited a medical facility/pharmacy', points: 8 },
+    { title: 'I have a fever', points: 7 },
+    {
+      title: 'I have a dry cough, pant/shortness of breath when doing a light exercise',
+      points: 8,
+    },
+    { title: 'I walked my pet on the street', points: 6 },
+    { title: 'I hugged with a human who is infected COVID-19', points: 100 },
   ].map((action, idx) => {
     async function handleClick() {
       await userContext.subtractPoints(action.points);
