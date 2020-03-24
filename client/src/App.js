@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import NotFound from './components/NotFound';
 import Profile from './components/Profile';
 import Risks from './components/Risks';
+import Sos from './components/Sos';
 import Theme from './components/Theme';
 import { UserContextProvider } from './contexts/UserContext';
 
@@ -41,6 +42,7 @@ export default function App() {
                 <Route path="/actions" component={Actions} />
                 <Route path="/risks" component={Risks} />
                 <Route path="/profile" component={Profile} />
+                <Route path="/sos" component={Sos} />
                 <Route component={NotFound} />
               </Switch>
               <Navbar />
