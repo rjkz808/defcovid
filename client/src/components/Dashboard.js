@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import styled from 'styled-components';
 import PointChart from './PointChart';
-import * as constants from '../constants';
 import Button from '../styles/Button';
 import Card from '../styles/Card';
 
@@ -17,21 +17,25 @@ const DashboardCol = styled(Col)`
 `;
 
 export default function Dashboard() {
-  const [points, setPoints] = useState(0);
+  const [redirect, setRedirect] = useState('');
 
   function handleRiskClick() {
-    setPoints(points => (points > constants.MIN_POINTS ? points - 1 : points));
+    setRedirect('/risks');
   }
 
   function handleActionClick() {
-    setPoints(points => (points < constants.MAX_POINTS ? points + 1 : points));
+    setRedirect('/actions');
+  }
+
+  if (redirect.length > 0) {
+    return <Redirect exact to={redirect} />;
   }
 
   return (
     <Container className="d-flex justify-content-center pt-3">
       <Row className="w-100">
         <Col className="mb-3" xs="12" lg="4">
-          <PointChart points={points} />
+          <PointChart />
         </Col>
         <Col xs="12" lg="8">
           <Row>

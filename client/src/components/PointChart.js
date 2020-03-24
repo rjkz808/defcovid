@@ -1,8 +1,8 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { PieChart, Pie, Label, Cell, ResponsiveContainer } from 'recharts';
-import PropTypes from 'prop-types';
 import styled, { ThemeContext } from 'styled-components';
 import * as constants from '../constants';
+import PointsContext from '../contexts/PointsContext';
 
 const PointChartContainer = styled.div`
   margin-right: auto;
@@ -39,12 +39,13 @@ const PointChartContainer = styled.div`
   }
 `;
 
-function PointChart(props) {
+export default function PointChart() {
   const [animation, setAnimation] = useState(true);
+  const pointsContext = useContext(PointsContext);
   const themeContext = useContext(ThemeContext);
 
-  const isPositive = props.points > constants.NO_POINTS;
-  const pointsAbsolute = Math.abs(props.points);
+  const isPositive = pointsContext.points > constants.NO_POINTS;
+  const pointsAbsolute = Math.abs(pointsContext.points);
 
   const data = useMemo(
     () => [
@@ -74,11 +75,11 @@ function PointChart(props) {
   }, [data, themeContext.colors]);
 
   function getSign() {
-    if (props.points > 0) {
+    if (pointsContext.points > 0) {
       return '+';
     }
 
-    if (props.points === 0) {
+    if (pointsContext.points === 0) {
       return '';
     }
 
@@ -112,7 +113,6 @@ function PointChart(props) {
               fontWeight={300}
               position="center"
               fill={themeContext.colors.foreground}
-              style={{ textShadow: '0px 0px 5px #fff' }}
             >
               {getSign() + pointsAbsolute.toString()}
             </Label>
@@ -122,9 +122,3 @@ function PointChart(props) {
     </PointChartContainer>
   );
 }
-
-PointChart.propTypes = {
-  points: PropTypes.number.isRequired,
-};
-
-export default PointChart;

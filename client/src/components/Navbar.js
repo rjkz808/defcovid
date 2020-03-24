@@ -33,8 +33,8 @@ const Nav = styled.div`
 const NavLink = styled(Link)`
   color: #fff !important;
   margin-bottom: 0;
-  height: 100px;
-  width: 60px;
+  height: 60px;
+  width: 90px;
   display: flex;
   justify-content: center;
   align-items: center;
