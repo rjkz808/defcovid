@@ -15,6 +15,7 @@ function Theme(props) {
         transparent: '#ffffff00',
         info: '#5e72e4',
         warning: '#fb6340',
+        yellow: '#ffd600',
       },
     };
   }, []);
