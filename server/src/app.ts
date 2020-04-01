@@ -38,7 +38,7 @@ mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true }).
       console.log(`devcovidapi is running at :${app.get('port')}`);
     });
   },
-  err => {
+  (err) => {
     console.error('mongodb connection error:', err);
   }
 );
