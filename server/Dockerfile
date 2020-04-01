@@ -6,4 +6,7 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
-CMD ["node", "app"]
+RUN npm run build
+
+CMD ["node", "dist/app"]
+EXPOSE 8080
