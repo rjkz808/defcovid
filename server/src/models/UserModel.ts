@@ -2,7 +2,7 @@ import mongoose, { Document, Schema } from 'mongoose';
 
 export interface User extends Document {
   name: string;
-  sex: string;
+  gender: string;
   points: number;
   dangerousAge: boolean;
   chronicDiseases: boolean;
@@ -11,7 +11,7 @@ export interface User extends Document {
 
 const UserSchema = new Schema({
   name: { type: String, required: true },
-  sex: { type: String, required: true },
+  gender: { type: String, required: true },
   points: { type: Number, required: true },
   dangerousAge: { type: Boolean, required: true },
   chronicDiseases: { type: Boolean, required: true },
